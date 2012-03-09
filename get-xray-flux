@@ -1,2 +1,2 @@
 #!/bin/bash
-wget --no-cache -qO - http://www.swpc.noaa.gov/rt_plots/xray_1m.html|tr -d "[:space:]"|perl -pe "s/.*(Cur(.*?TD){5}).*/\1\n/;s/(^Cur|<.*?>|<.*$)//g;s/(^.{7})/\1,/"
+wget --no-cache -qO - http://www.swpc.noaa.gov/ftpdir/lists/xray/Gp_xr_1m.txt|tail -n1|awk '{print $8}'

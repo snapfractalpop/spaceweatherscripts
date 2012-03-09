@@ -2,7 +2,11 @@ These scripts are meant to query NOAA data that is in the public domain and is a
 
 get-xray-flux:
 
-This script uses wget to fetch and parse current X-Ray flux levels.  It returns to standard output a timestamp (in the format MM/hhmm) followed by the current flare category and strength.
+This script uses wget to fetch and parse current X-Ray flux levels.
+
+It takes no arguments.
+
+It returns the current X-Ray flux (wavelengths: 1e-10m - 8e-10m) in watts / (meter ^ 2), as measured by the GOES-15 satellite.
 
 Goals:
 
