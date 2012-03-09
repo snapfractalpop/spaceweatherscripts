@@ -1,0 +1,9 @@
+These scripts are meant to query NOAA data that is in the public domain and is accessible via website.
+
+get-xray-flux:
+
+This script uses wget to fetch and parse current X-Ray flux levels.  It returns to standard output a timestamp (in the format MM/hhmm) followed by the current flare category and strength.
+
+Goals:
+
+To build an alert system and use cron to periodically monitor solar activity.

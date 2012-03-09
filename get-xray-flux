@@ -1,0 +1,2 @@
+#!/bin/bash
+wget -qO - http://www.swpc.noaa.gov/rt_plots/xray_1m.html|tr -d "[:space:]"|perl -pe "s/.*(Cur(.*?TD){5}).*/\1\n/;s/(^Cur|<.*?>|<.*$)//g;s/(^.{7})/\1,/"
