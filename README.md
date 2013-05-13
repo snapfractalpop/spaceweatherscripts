@@ -24,7 +24,9 @@ Installation instructions (for Linux):
 
 With sendmail/postfix installed, add an alias to $HOME/.mailrc (create that file if necessary) called flare_alert_group and add subscribers email addresses, comma separated like so:
 
-> <pre>alias flare_alert_group subscriber1@example.com,subscriber2@example.com</pre>
+<pre>
+alias flare_alert_group subscriber1@example.com,subscriber2@example.com
+</pre>
 
 You can also add cell phone numbers so that subscribers receive text messages:
 
@@ -36,8 +38,10 @@ Add send-alert script to $HOME/bin (create directory if necessary)
 
 Run crontab -e and add the following entry:
 
-> <pre># m h dom mon dow command</pre>
-> <pre>* * * * * /home/ubuntu/bin/send-alert</pre>
+<pre>
+# m h dom mon dow command
+* * * * * /home/ubuntu/bin/send-alert
+</pre>
 
 *Note*:
 This script will create a small file (a few bytes) in $HOME called .lastAlert which is used to keep a timestamp of when the last alert was sent. It is needed in order to prevent the sending of too many alerts in the duration of an x-class flare event. This file name/location can be changed in the script (in case of namespace collision).
