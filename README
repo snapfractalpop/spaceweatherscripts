@@ -37,7 +37,7 @@ Add send-alert script to $HOME/bin (create directory if necessary)
 Run crontab -e and add the following entry:
 
 > # m h dom mon dow command
-> * * * * * /home/ubuntu/bin/send-alert
+> \* \* \* \* \* /home/ubuntu/bin/send-alert
 
 *Note*:
 This script will create a small file (a few bytes) in $HOME called .lastAlert which is used to keep a timestamp of when the last alert was sent. It is needed in order to prevent the sending of too many alerts in the duration of an x-class flare event. This file name/location can be changed in the script (in case of namespace collision).
