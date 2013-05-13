@@ -1,0 +1,27 @@
+#!/bin/bash
+
+flux=`wget --no-cache -qO - http://www.swpc.noaa.gov/ftpdir/lists/xray/Gp_xr_1m.txt|tail -n1|awk '{print $8}'`
+
+# exponents:
+# 4 ~ X-class flare
+# 5 ~ M-class flare
+# 6 ~ C-class flare
+
+# we alert for X-class and higher
+
+case $flux in
+  *[0-4])
+    current="$(date +%s)"
+    last=0;
+    if [ -e "$HOME/.lastAlert" ] ; then
+      last=$(< "$HOME/.lastAlert")
+    fi
+    elapsed="$((current-last))"
+    if [ $elapsed -gt 3600 ] ; then
+      message="Alert: X-Ray flux was measured at $flux";
+      echo $message | mail -s "Solar Flare Alert `date`" flare_alert_group;
+    fi
+    echo $current > "$HOME/.lastAlert"
+    ;;
+esac
+

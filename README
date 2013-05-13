@@ -1,6 +1,16 @@
+Description:
+------------
+
 These scripts are meant to query NOAA data that is in the public domain and is accessible via website.
 
-get-xray-flux:
+**send-alert**:
+
+This script will conditionally send email alerts to addresses specified under the alias flare_alert_group.
+It can be placed in cron to run every minute. It will not send more than one alert per hour.
+
+It takes no arguments.
+
+**get-xray-flux**:
 
 This script uses wget to fetch and parse current X-Ray flux levels.
 
@@ -9,7 +19,31 @@ It takes no arguments.
 It returns the current X-Ray flux (wavelengths: 1e-10m - 8e-10m) in watts / (meter ^ 2), as measured by the GOES-15 satellite.
 More details about data source below.
 
+Installation instructions (for Linux):
+======================================
+
+With sendmail/postfix installed, add an alias to $HOME/.mailrc (create that file if necessary) called flare_alert_group and add subscribers email addresses, comma separated like so:
+
+> alias flare_alert_group subscriber1@example.com,subscriber2@example.com
+
+You can also add cell phone numbers so that subscribers receive text messages:
+
+- Verizon: {10 digit cell number}@vtext.com
+- Sprint: {10 digit cell number}@messaging.sprintpcs.com
+- AT&T: {10 digit cell number}@txt.att.net
+
+Add send-alert script to $HOME/bin (create directory if necessary)
+
+Run crontab -e and add the following entry:
+
+> # m h dom mon dow command
+> \* \* \* \* \* /home/ubuntu/bin/send-alert
+
+*Note*:
+This script will create a small file (a few bytes) in $HOME called .lastAlert which is used to keep a timestamp of when the last alert was sent. It is needed in order to prevent the sending of too many alerts in the duration of an x-class flare event. This file name/location can be changed in the script (in case of namespace collision).
+
 Goals:
+------
 
 To build an alert system and use cron to periodically monitor solar activity.
 
