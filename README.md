@@ -24,7 +24,7 @@ Installation instructions (for Linux):
 
 With sendmail/postfix installed, add an alias to $HOME/.mailrc (create that file if necessary) called flare_alert_group and add subscribers email addresses, comma separated like so:
 
-> alias flare_alert_group subscriber1@example.com,subscriber2@example.com
+> <pre>alias flare_alert_group subscriber1@example.com,subscriber2@example.com</pre>
 
 You can also add cell phone numbers so that subscribers receive text messages:
 
@@ -36,8 +36,8 @@ Add send-alert script to $HOME/bin (create directory if necessary)
 
 Run crontab -e and add the following entry:
 
-> # m h dom mon dow command
-> \* \* \* \* \* /home/ubuntu/bin/send-alert
+> <pre># m h dom mon dow command</pre>
+> <pre>* * * * * /home/ubuntu/bin/send-alert</pre>
 
 *Note*:
 This script will create a small file (a few bytes) in $HOME called .lastAlert which is used to keep a timestamp of when the last alert was sent. It is needed in order to prevent the sending of too many alerts in the duration of an x-class flare event. This file name/location can be changed in the script (in case of namespace collision).
@@ -47,6 +47,7 @@ Goals:
 
 To build an alert system and use cron to periodically monitor solar activity.
 
+<pre>
 ========< Sample of data source file >========
 :Data_list: Gp_xr_1m.txt
 
@@ -70,3 +71,4 @@ To build an alert system and use cron to periodically monitor solar activity.
 2012 03 10  0035   55996   2100     1.50e-07    2.06e-06
 2012 03 10  0036   55996   2160     1.49e-07    2.12e-06
 2012 03 10  0037   55996   2220     1.37e-07    2.11e-06
+</pre>
