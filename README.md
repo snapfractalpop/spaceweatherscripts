@@ -52,7 +52,7 @@ Goals:
 To build an alert system and use cron to periodically monitor solar activity.
 
 <pre>
-========< Sample of data source file \>========
+======== Sample of data source file ========
 :Data_list: Gp_xr_1m.txt
 
 # Prepared by the U.S. Dept. of Commerce, NOAA, Space Weather Prediction Center
