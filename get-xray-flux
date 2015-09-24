@@ -1,2 +1,2 @@
 #!/bin/bash
-wget --no-cache -qO - http://www.swpc.noaa.gov/ftpdir/lists/xray/Gp_xr_1m.txt|tail -n1|awk '{print $8}'
+wget --no-cache -qO - http://services.swpc.noaa.gov/text/goes-xray-flux-primary.txt|tail -n1|awk '{print $8}'
